@@ -438,10 +438,23 @@ footer{
 
 <script>
 const v = id => document.getElementById(id)?.value?.trim() || '';
+
+function saveBooking(data) {
+  const bookings = JSON.parse(localStorage.getItem('nova_bookings') || '[]');
+  bookings.unshift(data);
+  localStorage.setItem('nova_bookings', JSON.stringify(bookings));
+}
+
 document.getElementById('bookForm').addEventListener('submit', e => {
   e.preventDefault();
   const name = v('fn'), phone = v('fp'), svc = v('fs'), type = v('ft'), date = v('fd'), notes = document.getElementById('fn2').value.trim();
   if (!name || !phone || !svc) { alert('Please fill in your name, phone and service.'); return; }
+  const booking = {
+    id: Date.now().toString(),
+    name, phone, service: svc, poolType: type, preferredDate: date, notes,
+    status: 'pending', source: 'website', createdAt: new Date().toISOString()
+  };
+  saveBooking(booking);
   let msg = encodeURIComponent(
     'Hello Nova Pools! I would like to book a service.\n\n' +
     'Name: ' + name + '\n' +
