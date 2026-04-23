@@ -1,0 +1,982 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Nova Pools — Jamaica's premier luxury pool cleaning, maintenance and renovation service. Hotel-quality results for residences, villas and commercial estates.">
+<title>Nova Pools | Luxury Pool Care · Jamaica</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,300&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+<style>
+:root{
+  --ink:#060f1e;--navy:#0a1a35;--navy2:#0d2245;
+  --aqua:#00b8d9;--aqua2:#00d4f5;--aqua-dim:rgba(0,184,217,.12);
+  --gold:#b8965a;--gold2:#d4aa6a;
+  --white:#ffffff;--cream:#f8f9fd;--muted:#546480;--border:rgba(10,26,53,.07);
+  --grad-dark:linear-gradient(160deg,#060f1e 0%,#0a1a35 50%,#0d2245 100%);
+  --grad-aqua:linear-gradient(135deg,#00b8d9 0%,#0080b0 100%);
+  --grad-gold:linear-gradient(135deg,#b8965a 0%,#d4aa6a 100%);
+  --r-xl:28px;--r-lg:20px;--r-md:14px;--r-sm:10px;
+  --sh-sm:0 2px 16px rgba(6,15,30,.06);--sh-md:0 8px 36px rgba(6,15,30,.1);
+  --sh-lg:0 20px 60px rgba(6,15,30,.14);--sh-xl:0 36px 90px rgba(6,15,30,.18);
+  --ease:cubic-bezier(.4,0,.2,1);--t:.45s;
+}
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;-webkit-tap-highlight-color:transparent;}
+body{font-family:'DM Sans',sans-serif;background:var(--white);color:var(--navy);overflow-x:hidden;-webkit-font-smoothing:antialiased;}
+img{display:block;width:100%;height:100%;object-fit:cover;}
+a{text-decoration:none;color:inherit;}
+ul{list-style:none;}
+button{cursor:pointer;font-family:inherit;border:none;background:none;}
+::-webkit-scrollbar{width:4px;}
+::-webkit-scrollbar-track{background:#060f1e;}
+::-webkit-scrollbar-thumb{background:var(--aqua);border-radius:2px;}
+
+@keyframes fadeUp{from{opacity:0;transform:translateY(44px)}to{opacity:1;transform:translateY(0)}}
+@keyframes fadeIn{from{opacity:0}to{opacity:1}}
+@keyframes floatY{0%,100%{transform:translateY(0)}50%{transform:translateY(-10px)}}
+@keyframes pulsering{0%,100%{box-shadow:0 0 0 0 rgba(37,211,102,.5)}70%{box-shadow:0 0 0 16px transparent}}
+@keyframes rippleFx{0%{transform:translate(-50%,-50%) scale(0);opacity:.8}100%{transform:translate(-50%,-50%) scale(6);opacity:0}}
+@keyframes waterFlow{0%{background-position:0% 50%}50%{background-position:100% 50%}100%{background-position:0% 50%}}
+@keyframes gradShift{0%,100%{background-position:0% 50%}50%{background-position:100% 50%}}
+@keyframes scanline{0%{top:-100%}100%{top:100%}}
+@keyframes tickerScroll{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+@keyframes waveAnim{0%{transform:translateX(0) scaleY(1)}50%{transform:translateX(-25%) scaleY(.85)}100%{transform:translateX(-50%) scaleY(1)}}
+@keyframes shimmer{0%{transform:translateX(-100%)}100%{transform:translateX(400%)}}
+
+[data-reveal]{opacity:0;transition:opacity .8s var(--ease),transform .8s var(--ease);}
+[data-reveal="up"]{transform:translateY(52px)}
+[data-reveal="left"]{transform:translateX(-52px)}
+[data-reveal="right"]{transform:translateX(52px)}
+[data-reveal="scale"]{transform:scale(.88)}
+[data-reveal].in{opacity:1;transform:none;}
+
+/* NAV */
+#nav{position:fixed;top:0;left:0;right:0;z-index:999;padding:26px 7%;display:flex;align-items:center;justify-content:space-between;transition:padding .4s var(--ease),background .4s;}
+#nav.stuck{padding:14px 7%;background:rgba(6,15,30,.95);backdrop-filter:blur(28px) saturate(180%);box-shadow:0 1px 0 rgba(0,184,217,.12),0 8px 40px rgba(0,0,0,.4);}
+.logo{display:flex;align-items:center;}
+.logo-img{height:52px;width:auto;display:block;background:#fff;border-radius:8px;padding:5px 14px;object-fit:contain;transition:opacity .3s;}
+.nav-links{display:flex;align-items:center;gap:34px;}
+.nav-links a{font-size:13.5px;font-weight:500;color:rgba(255,255,255,.7);letter-spacing:.3px;position:relative;transition:color .3s;}
+.nav-links a::after{content:'';position:absolute;bottom:-5px;left:0;width:0;height:1.5px;background:var(--aqua2);transition:width .35s var(--ease);border-radius:2px;}
+.nav-links a:hover{color:#fff;}
+.nav-links a:hover::after{width:100%;}
+.nav-cta{display:inline-flex!important;align-items:center;gap:8px;background:transparent!important;border:1.5px solid rgba(0,184,217,.5)!important;color:var(--aqua2)!important;padding:10px 24px!important;border-radius:50px!important;font-weight:600!important;transition:all .35s var(--ease)!important;}
+.nav-cta::after{display:none!important;}
+.nav-cta:hover{background:var(--aqua)!important;border-color:var(--aqua)!important;color:#fff!important;box-shadow:0 8px 26px rgba(0,184,217,.4)!important;transform:translateY(-2px);}
+.burger{display:none;flex-direction:column;gap:5.5px;padding:4px;z-index:1001;}
+.burger span{display:block;width:26px;height:2px;background:#fff;border-radius:2px;transition:all .36s var(--ease);}
+.burger.open span:nth-child(1){transform:translateY(7.5px) rotate(45deg);}
+.burger.open span:nth-child(2){opacity:0;transform:scaleX(0);}
+.burger.open span:nth-child(3){transform:translateY(-7.5px) rotate(-45deg);}
+.mob-nav{display:none;position:fixed;inset:0;z-index:998;background:rgba(6,15,30,.97);backdrop-filter:blur(24px);flex-direction:column;align-items:center;justify-content:center;gap:30px;}
+.mob-nav.open{display:flex;animation:fadeIn .25s ease;}
+.mob-nav-logo{height:56px;width:auto;display:block;border-radius:8px;padding:5px 14px;background:#fff;margin-bottom:14px;}
+.mob-nav a{font-size:28px;font-weight:300;color:rgba(255,255,255,.85);font-family:'Cormorant Garamond',serif;letter-spacing:.5px;transition:color .3s;}
+.mob-nav a:hover{color:var(--aqua2);}
+.mob-nav .m-cta{font-size:16px;font-family:'DM Sans',sans-serif;font-weight:600;color:var(--aqua2);border:1.5px solid var(--aqua);padding:14px 42px;border-radius:50px;margin-top:10px;}
+
+/* HERO */
+#hero{min-height:100vh;position:relative;display:flex;align-items:center;overflow:hidden;}
+.hero-bg{position:absolute;inset:0;background-image:url('https://images.unsplash.com/photo-1575429198097-0414ec08e8cd?w=2000&q=92&auto=format&fit=crop&crop=center');background-size:cover;background-position:center 45%;transform:scale(1.06);transition:transform 14s ease;will-change:transform;}
+.hero-bg.loaded{transform:scale(1);}
+.hero-ov{position:absolute;inset:0;background:linear-gradient(105deg,rgba(6,15,30,.93) 0%,rgba(6,15,30,.72) 52%,rgba(6,15,30,.4) 100%),linear-gradient(to top,rgba(6,15,30,.65) 0%,transparent 45%);}
+.hero-shimmer{position:absolute;inset:0;background:linear-gradient(120deg,transparent 0%,rgba(0,184,217,.03) 45%,transparent 80%);background-size:250% 250%;animation:waterFlow 10s ease-in-out infinite;pointer-events:none;}
+.hero-inner{position:relative;z-index:2;max-width:1280px;margin:0 auto;padding:155px 7% 130px;width:100%;}
+.eyebrow{display:inline-flex;align-items:center;gap:9px;background:rgba(0,184,217,.1);border:1px solid rgba(0,184,217,.28);backdrop-filter:blur(14px);color:var(--aqua2);padding:8px 20px;border-radius:50px;font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;margin-bottom:30px;animation:fadeUp .9s .1s both;}
+.pulse-dot{width:7px;height:7px;border-radius:50%;background:var(--aqua2);animation:pulsering 2.2s ease-in-out infinite;}
+.hero-h1{font-family:'Cormorant Garamond',serif;font-size:clamp(54px,7.8vw,112px);font-weight:600;color:#fff;line-height:1.03;letter-spacing:-.5px;margin-bottom:26px;animation:fadeUp .9s .25s both;}
+.hero-h1 em{font-style:italic;color:var(--aqua2);}
+.hero-sub{font-size:clamp(15px,1.8vw,19px);font-weight:300;color:rgba(255,255,255,.66);line-height:1.85;max-width:520px;margin-bottom:50px;animation:fadeUp .9s .4s both;}
+.hero-btns{display:flex;gap:16px;flex-wrap:wrap;animation:fadeUp .9s .55s both;}
+.btn-p{display:inline-flex;align-items:center;gap:10px;background:var(--grad-aqua);color:#fff;font-size:15px;font-weight:600;padding:17px 38px;border-radius:50px;box-shadow:0 10px 34px rgba(0,184,217,.42);transition:all var(--t) var(--ease);position:relative;overflow:hidden;}
+.btn-p::before{content:'';position:absolute;inset:0;background:rgba(255,255,255,.12);transform:translateX(-100%) skewX(-15deg);transition:transform .5s var(--ease);}
+.btn-p:hover{transform:translateY(-4px);box-shadow:0 18px 50px rgba(0,184,217,.58);}
+.btn-p:hover::before{transform:translateX(200%) skewX(-15deg);}
+.btn-o{display:inline-flex;align-items:center;gap:10px;background:rgba(255,255,255,.07);color:rgba(255,255,255,.88);font-size:15px;font-weight:500;padding:17px 38px;border-radius:50px;border:1.5px solid rgba(255,255,255,.22);backdrop-filter:blur(14px);transition:all var(--t) var(--ease);}
+.btn-o:hover{background:rgba(255,255,255,.14);border-color:rgba(255,255,255,.44);transform:translateY(-4px);}
+.scroll-cue{position:absolute;bottom:140px;left:50%;transform:translateX(-50%);z-index:2;display:flex;flex-direction:column;align-items:center;gap:8px;cursor:pointer;animation:fadeUp .9s .9s both;}
+.scroll-cue span{font-size:10px;font-weight:700;letter-spacing:2.5px;text-transform:uppercase;color:rgba(255,255,255,.35);}
+.scroll-line{width:1.5px;height:54px;background:linear-gradient(to bottom,rgba(0,184,217,.8),transparent);position:relative;overflow:hidden;}
+.scroll-line::after{content:'';position:absolute;top:0;left:0;right:0;height:16px;background:rgba(0,184,217,.9);border-radius:2px;animation:scanline 1.8s ease-in-out infinite;}
+.hero-stats{position:absolute;bottom:0;left:0;right:0;z-index:3;background:rgba(6,15,30,.84);backdrop-filter:blur(22px) saturate(150%);border-top:1px solid rgba(0,184,217,.14);display:flex;animation:fadeIn 1s .8s both;}
+.stat-item{flex:1;padding:26px 28px;text-align:center;border-right:1px solid rgba(255,255,255,.05);transition:background .35s;}
+.stat-item:last-child{border-right:none;}
+.stat-item:hover{background:rgba(0,184,217,.07);}
+.stat-n{font-family:'Cormorant Garamond',serif;font-size:42px;font-weight:600;line-height:1;background:linear-gradient(135deg,#fff,var(--aqua2));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;}
+.stat-n sup{font-size:20px;font-weight:400;}
+.stat-l{font-size:10.5px;font-weight:500;color:rgba(255,255,255,.38);letter-spacing:1.2px;text-transform:uppercase;margin-top:5px;}
+
+/* TICKER */
+.ticker-wrap{background:var(--navy);border-top:1px solid rgba(0,184,217,.12);border-bottom:1px solid rgba(0,184,217,.12);overflow:hidden;padding:15px 0;}
+.ticker-inner{display:flex;width:max-content;animation:tickerScroll 30s linear infinite;}
+.ticker-item{display:inline-flex;align-items:center;gap:12px;padding:0 44px;font-size:12px;font-weight:600;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,.38);white-space:nowrap;}
+.ticker-item i{color:var(--aqua);font-size:9px;}
+
+/* SECTION SHARED */
+.section{padding:120px 7%;}
+.container{max-width:1280px;margin:0 auto;}
+.s-kicker{display:inline-flex;align-items:center;gap:10px;font-size:10.5px;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:var(--gold);margin-bottom:16px;}
+.s-kicker::before{content:'';display:block;width:26px;height:1.5px;background:var(--gold);}
+.s-title{font-family:'Cormorant Garamond',serif;font-size:clamp(32px,4vw,58px);font-weight:600;line-height:1.1;color:var(--navy);margin-bottom:20px;letter-spacing:-.3px;}
+.s-sub{font-size:17px;font-weight:300;color:var(--muted);line-height:1.82;max-width:580px;}
+.s-head{margin-bottom:70px;}
+.s-title-w{color:#fff!important;}
+.s-sub-w{color:rgba(255,255,255,.55)!important;}
+
+/* INTRO / ABOUT */
+#intro{background:var(--cream);}
+.intro-grid{display:grid;grid-template-columns:1.1fr 1fr;gap:90px;align-items:center;}
+.intro-visual{position:relative;}
+.intro-img-main{border-radius:var(--r-xl);overflow:hidden;aspect-ratio:4/5;box-shadow:var(--sh-xl);}
+.intro-img-main::after{content:'';position:absolute;inset:0;background:linear-gradient(to top,rgba(6,15,30,.28) 0%,transparent 55%);pointer-events:none;border-radius:var(--r-xl);}
+.intro-img-accent{position:absolute;bottom:-30px;right:-30px;width:50%;aspect-ratio:1;border-radius:var(--r-lg);overflow:hidden;box-shadow:var(--sh-xl);border:5px solid var(--cream);}
+.intro-badge{position:absolute;top:30px;left:-22px;background:var(--grad-dark);border:1px solid rgba(0,184,217,.2);color:#fff;padding:22px 26px;border-radius:var(--r-md);text-align:center;min-width:120px;box-shadow:var(--sh-lg);}
+.ib-num{font-family:'Cormorant Garamond',serif;font-size:48px;font-weight:600;line-height:1;background:var(--grad-aqua);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;}
+.ib-lbl{font-size:10px;font-weight:600;letter-spacing:1.5px;text-transform:uppercase;color:rgba(255,255,255,.46);margin-top:5px;line-height:1.4;}
+.intro-p{font-size:16px;font-weight:300;color:var(--muted);line-height:1.9;margin-bottom:18px;}
+.feat-list{margin:34px 0;}
+.feat-list li{display:flex;align-items:center;gap:14px;padding:14px 0;border-bottom:1px solid var(--border);font-size:15px;font-weight:500;color:var(--navy);}
+.feat-list li:last-child{border-bottom:none;}
+.f-ico{width:34px;height:34px;border-radius:9px;flex-shrink:0;background:var(--aqua-dim);display:flex;align-items:center;justify-content:center;color:var(--aqua);font-size:14px;transition:all .35s var(--ease);}
+.feat-list li:hover .f-ico{background:var(--aqua);color:#fff;transform:scale(1.1);}
+
+/* SERVICES */
+#services{background:var(--white);}
+.svc-featured{display:grid;grid-template-columns:1fr 1fr;border-radius:var(--r-xl);overflow:hidden;box-shadow:var(--sh-lg);margin-bottom:28px;min-height:400px;border:1px solid var(--border);}
+.svc-feat-img{position:relative;overflow:hidden;}
+.svc-feat-img img{transition:transform .8s var(--ease);}
+.svc-featured:hover .svc-feat-img img{transform:scale(1.05);}
+.svc-feat-body{padding:56px 50px;background:#fff;display:flex;flex-direction:column;justify-content:center;}
+.svc-feat-tag{display:inline-flex;align-items:center;gap:7px;background:var(--aqua-dim);color:var(--aqua);padding:6px 16px;border-radius:50px;font-size:10.5px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;margin-bottom:22px;width:fit-content;}
+.svc-feat-h{font-family:'Cormorant Garamond',serif;font-size:36px;font-weight:600;color:var(--navy);line-height:1.15;margin-bottom:16px;}
+.svc-feat-p{font-size:15px;font-weight:300;color:var(--muted);line-height:1.82;margin-bottom:28px;}
+.svc-feat-link{display:inline-flex;align-items:center;gap:9px;color:var(--aqua);font-size:14px;font-weight:600;letter-spacing:.3px;transition:gap .3s;}
+.svc-feat-link:hover{gap:14px;}
+.svc-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;}
+.svc-card{background:var(--white);border-radius:var(--r-lg);border:1px solid var(--border);padding:36px 30px 32px;position:relative;overflow:hidden;transition:all var(--t) var(--ease);box-shadow:var(--sh-sm);cursor:default;display:flex;flex-direction:column;}
+.svc-card::before{content:'';position:absolute;top:0;left:0;right:0;height:2.5px;background:var(--grad-aqua);transform:scaleX(0);transform-origin:left;transition:transform .5s var(--ease);}
+.svc-card::after{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at 30% 0%,rgba(0,184,217,.05) 0%,transparent 65%);opacity:0;transition:opacity .45s;}
+.svc-card:hover{transform:translateY(-10px);box-shadow:var(--sh-xl);border-color:rgba(0,184,217,.15);}
+.svc-card:hover::before{transform:scaleX(1);}
+.svc-card:hover::after{opacity:1;}
+.svc-num{font-family:'Cormorant Garamond',serif;font-size:13px;font-weight:600;color:rgba(0,184,217,.28);letter-spacing:1px;margin-bottom:20px;}
+.svc-ico{width:56px;height:56px;border-radius:15px;background:var(--aqua-dim);display:flex;align-items:center;justify-content:center;font-size:22px;color:var(--aqua);margin-bottom:22px;transition:all .4s var(--ease);position:relative;z-index:1;}
+.svc-card:hover .svc-ico{background:var(--grad-aqua);color:#fff;box-shadow:0 10px 26px rgba(0,184,217,.35);transform:rotate(-8deg) scale(1.1);}
+.svc-name{font-size:17px;font-weight:600;color:var(--navy);margin-bottom:11px;position:relative;z-index:1;}
+.svc-desc{font-size:14px;font-weight:300;color:var(--muted);line-height:1.72;position:relative;z-index:1;flex:1;}
+
+/* PROCESS */
+#process{background:var(--grad-dark);position:relative;overflow:hidden;}
+#process::before{content:'';position:absolute;top:-300px;left:-200px;width:800px;height:800px;background:radial-gradient(circle,rgba(0,184,217,.08) 0%,transparent 65%);pointer-events:none;}
+.process-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-top:70px;position:relative;}
+.process-grid::before{content:'';position:absolute;top:54px;left:12%;right:12%;height:1px;background:linear-gradient(to right,transparent,rgba(0,184,217,.3) 20%,rgba(0,184,217,.3) 80%,transparent);}
+.step{text-align:center;padding:48px 28px;background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.05);border-radius:var(--r-lg);position:relative;z-index:1;transition:all var(--t) var(--ease);}
+.step:hover{background:rgba(0,184,217,.07);border-color:rgba(0,184,217,.2);transform:translateY(-8px);}
+.step-n{width:54px;height:54px;border-radius:50%;background:rgba(0,184,217,.1);border:1.5px solid rgba(0,184,217,.3);display:flex;align-items:center;justify-content:center;margin:0 auto 24px;font-family:'Cormorant Garamond',serif;font-size:24px;font-weight:600;color:var(--aqua2);transition:all .4s var(--ease);}
+.step:hover .step-n{background:var(--aqua);border-color:var(--aqua);color:#fff;box-shadow:0 8px 28px rgba(0,184,217,.42);}
+.step-t{font-size:17px;font-weight:600;color:#fff;margin-bottom:12px;}
+.step-d{font-size:13.5px;font-weight:300;color:rgba(255,255,255,.48);line-height:1.72;}
+
+/* GALLERY */
+#gallery{background:var(--cream);}
+.ba-wrap{border-radius:var(--r-xl);overflow:hidden;box-shadow:var(--sh-xl);margin-bottom:32px;position:relative;aspect-ratio:21/9;cursor:ew-resize;user-select:none;touch-action:pan-y;}
+.ba-img{position:absolute;inset:0;}
+.ba-img img{width:100%;height:100%;object-fit:cover;}
+.ba-after{clip-path:inset(0 50% 0 0);}
+.ba-div{position:absolute;top:0;bottom:0;left:50%;width:3px;background:#fff;transform:translateX(-50%);box-shadow:0 0 20px rgba(0,0,0,.4);z-index:10;}
+.ba-knob{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:54px;height:54px;border-radius:50%;background:#fff;box-shadow:0 4px 20px rgba(0,0,0,.3);display:flex;align-items:center;justify-content:center;font-size:15px;color:var(--navy);font-weight:900;letter-spacing:-2px;}
+.ba-lbl{position:absolute;bottom:20px;padding:7px 18px;border-radius:50px;font-size:10.5px;font-weight:800;letter-spacing:2px;text-transform:uppercase;z-index:9;backdrop-filter:blur(14px);}
+.ba-lbl.bef{left:20px;background:rgba(6,15,30,.75);color:rgba(255,255,255,.85);}
+.ba-lbl.aft{right:20px;background:rgba(0,184,217,.88);color:#fff;}
+.gal-grid{display:grid;grid-template-columns:repeat(4,1fr);grid-template-rows:260px 260px;gap:16px;}
+.g-it{border-radius:var(--r-lg);overflow:hidden;position:relative;box-shadow:var(--sh-md);}
+.g-it img{width:100%;height:100%;transition:transform .65s var(--ease);}
+.g-it:hover img{transform:scale(1.08);}
+.g-it:nth-child(1){grid-column:1/3;}
+.g-it:nth-child(3){grid-column:4/5;grid-row:1/3;}
+.g-it:nth-child(5){grid-column:2/4;grid-row:2/3;}
+.g-ov{position:absolute;inset:0;background:linear-gradient(to top,rgba(6,15,30,.65) 0%,transparent 55%);opacity:0;transition:opacity .45s;display:flex;align-items:flex-end;padding:20px;}
+.g-it:hover .g-ov{opacity:1;}
+.g-tag{background:var(--aqua);color:#fff;padding:5px 16px;border-radius:50px;font-size:10.5px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;}
+
+/* WHY US */
+#why{background:var(--navy);position:relative;overflow:hidden;}
+#why::before{content:'';position:absolute;inset:0;background-image:url('https://images.unsplash.com/photo-1563233369-57a14f23174a?w=1800&q=70&auto=format&fit=crop');background-size:cover;background-position:center;opacity:.06;}
+#why .container{position:relative;z-index:1;}
+.why-layout{display:grid;grid-template-columns:1.2fr 1fr;gap:80px;align-items:center;}
+.why-cards{display:grid;grid-template-columns:1fr 1fr;gap:22px;margin-top:50px;}
+.wc{background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.07);border-radius:var(--r-lg);padding:38px 32px;display:flex;gap:20px;transition:all var(--t) var(--ease);position:relative;overflow:hidden;}
+.wc::before{content:'';position:absolute;top:0;left:0;bottom:0;width:3px;background:var(--grad-aqua);transform:scaleY(0);transform-origin:bottom;transition:transform .5s var(--ease);}
+.wc:hover{background:rgba(0,184,217,.07);border-color:rgba(0,184,217,.18);transform:translateX(6px);}
+.wc:hover::before{transform:scaleY(1);}
+.wc-ico{width:54px;height:54px;border-radius:14px;flex-shrink:0;background:rgba(0,184,217,.12);display:flex;align-items:center;justify-content:center;font-size:22px;color:var(--aqua2);transition:all .4s var(--ease);}
+.wc:hover .wc-ico{background:var(--aqua);color:#fff;box-shadow:0 10px 30px rgba(0,184,217,.35);transform:rotate(-6deg) scale(1.08);}
+.wc-t{font-size:17px;font-weight:600;color:#fff;margin-bottom:9px;}
+.wc-d{font-size:14px;font-weight:300;color:rgba(255,255,255,.48);line-height:1.75;}
+.why-visual{position:relative;}
+.why-img{border-radius:var(--r-xl);overflow:hidden;aspect-ratio:3/4;box-shadow:var(--sh-xl);border:2px solid rgba(0,184,217,.12);}
+.why-sc{position:absolute;right:-28px;bottom:60px;background:var(--grad-dark);border:1px solid rgba(0,184,217,.18);padding:24px 28px;border-radius:var(--r-lg);box-shadow:var(--sh-xl);min-width:190px;backdrop-filter:blur(22px);}
+.wsc-n{font-family:'Cormorant Garamond',serif;font-size:48px;font-weight:600;background:var(--grad-aqua);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;line-height:1;}
+.wsc-l{font-size:11px;font-weight:600;letter-spacing:1.5px;text-transform:uppercase;color:rgba(255,255,255,.4);margin-top:6px;}
+.why-award{position:absolute;top:32px;left:-30px;background:var(--grad-gold);padding:18px 20px;border-radius:var(--r-md);color:#fff;text-align:center;box-shadow:0 10px 32px rgba(184,150,90,.4);min-width:100px;}
+.wa-ico{font-size:28px;margin-bottom:6px;}
+.wa-lbl{font-size:10px;font-weight:700;letter-spacing:1px;text-transform:uppercase;opacity:.88;line-height:1.3;}
+
+/* TESTIMONIALS */
+#testi{background:var(--white);}
+.testi-pull{font-family:'Cormorant Garamond',serif;font-size:clamp(26px,3.5vw,46px);font-weight:500;font-style:italic;color:var(--navy);line-height:1.38;text-align:center;max-width:820px;margin:0 auto 72px;padding:0 20px;position:relative;}
+.testi-pull::before,.testi-pull::after{content:'"';font-family:'Cormorant Garamond',serif;font-size:110px;line-height:0;color:var(--aqua);opacity:.12;position:absolute;font-style:normal;}
+.testi-pull::before{top:40px;left:0;}
+.testi-pull::after{bottom:-20px;right:0;content:'\201D';}
+.tgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;}
+.tc{background:var(--cream);border:1px solid var(--border);border-radius:var(--r-lg);padding:40px 36px;transition:all var(--t) var(--ease);}
+.tc:hover{transform:translateY(-8px);box-shadow:var(--sh-lg);border-color:rgba(0,184,217,.15);}
+.tc-stars{display:flex;gap:3px;margin-bottom:18px;}
+.tc-stars i{color:var(--gold);font-size:13px;}
+.tc-text{font-size:15px;font-weight:300;color:var(--muted);line-height:1.85;margin-bottom:28px;font-style:italic;}
+.tc-auth{display:flex;align-items:center;gap:13px;}
+.tc-av{width:48px;height:48px;border-radius:50%;background:var(--grad-aqua);display:flex;align-items:center;justify-content:center;font-family:'Cormorant Garamond',serif;font-size:20px;font-weight:600;color:#fff;flex-shrink:0;}
+.tc-name{font-size:15px;font-weight:600;color:var(--navy);}
+.tc-role{font-size:12px;color:rgba(84,100,128,.6);margin-top:2px;}
+
+/* BOOKING */
+#booking{background:var(--grad-dark);position:relative;overflow:hidden;}
+#booking::before{content:'';position:absolute;inset:0;background-image:url('https://images.unsplash.com/photo-1600566752355-35792bedcfea?w=1800&q=70&auto=format&fit=crop');background-size:cover;background-position:center 60%;opacity:.07;}
+#booking::after{content:'';position:absolute;top:-250px;right:-200px;width:700px;height:700px;background:radial-gradient(circle,rgba(0,184,217,.1) 0%,transparent 65%);pointer-events:none;}
+#booking .container{position:relative;z-index:1;}
+.book-grid{display:grid;grid-template-columns:1fr 1.1fr;gap:72px;align-items:start;}
+.c-way{display:flex;align-items:center;gap:18px;padding:19px 22px;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.08);border-radius:var(--r-md);margin-bottom:14px;transition:all var(--t) var(--ease);color:inherit;}
+.c-way:hover{background:rgba(0,184,217,.08);border-color:rgba(0,184,217,.22);transform:translateX(8px);}
+.cw-ico{width:52px;height:52px;border-radius:14px;display:flex;align-items:center;justify-content:center;font-size:20px;flex-shrink:0;color:#fff;}
+.cw-ico.ph{background:var(--grad-aqua);}
+.cw-ico.wa{background:linear-gradient(135deg,#25D366,#128C7E);}
+.cw-ico.em{background:linear-gradient(135deg,#667eea,#764ba2);}
+.cw-lbl{font-size:10.5px;font-weight:700;letter-spacing:1.2px;text-transform:uppercase;color:rgba(255,255,255,.36);margin-bottom:4px;}
+.cw-val{font-size:16px;font-weight:600;color:#fff;}
+.form-card{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.1);border-radius:var(--r-xl);padding:50px 46px;backdrop-filter:blur(24px);}
+.form-title{font-family:'Cormorant Garamond',serif;font-size:28px;font-weight:600;color:#fff;margin-bottom:32px;}
+.f-row{display:grid;grid-template-columns:1fr 1fr;gap:16px;}
+.fg{margin-bottom:18px;}
+.fg label{display:block;font-size:10.5px;font-weight:700;letter-spacing:1.2px;text-transform:uppercase;color:rgba(255,255,255,.42);margin-bottom:8px;}
+.fg input,.fg select,.fg textarea{width:100%;background:rgba(255,255,255,.07);border:1.5px solid rgba(255,255,255,.12);border-radius:var(--r-sm);padding:14px 18px;color:#fff;font-size:15px;font-family:'DM Sans',sans-serif;outline:none;transition:all .35s var(--ease);-webkit-appearance:none;appearance:none;}
+.fg input::placeholder,.fg textarea::placeholder{color:rgba(255,255,255,.22);}
+.fg select option{background:#0d2245;color:#fff;}
+.fg input:focus,.fg select:focus,.fg textarea:focus{border-color:var(--aqua);background:rgba(0,184,217,.08);box-shadow:0 0 0 4px rgba(0,184,217,.1);}
+.btn-submit{width:100%;display:flex;align-items:center;justify-content:center;gap:11px;background:var(--grad-aqua);color:#fff;font-size:15.5px;font-weight:600;font-family:'DM Sans',sans-serif;padding:18px 28px;border-radius:var(--r-md);border:none;box-shadow:0 10px 36px rgba(0,184,217,.38);transition:all var(--t) var(--ease);position:relative;overflow:hidden;margin-top:6px;}
+.btn-submit::before{content:'';position:absolute;inset:0;background:rgba(255,255,255,.1);transform:translateX(-100%) skewX(-15deg);transition:transform .5s var(--ease);}
+.btn-submit:hover{transform:translateY(-4px);box-shadow:0 18px 50px rgba(0,184,217,.58);}
+.btn-submit:hover::before{transform:translateX(200%) skewX(-15deg);}
+.f-success{display:none;text-align:center;padding:48px 20px;}
+.f-success i{font-size:56px;color:var(--aqua);margin-bottom:18px;}
+.f-success h3{font-family:'Cormorant Garamond',serif;font-size:28px;font-weight:600;color:#fff;margin-bottom:12px;}
+.f-success p{font-size:15px;color:rgba(255,255,255,.55);line-height:1.7;}
+
+/* AREAS */
+#areas{background:var(--cream);}
+.areas-grid{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center;}
+.areas-img{position:relative;aspect-ratio:5/4;border-radius:var(--r-xl);overflow:hidden;box-shadow:var(--sh-xl);}
+.areas-img img{width:100%;height:100%;object-fit:cover;}
+.areas-img::after{content:'';position:absolute;inset:0;background:linear-gradient(to top,rgba(6,15,30,.55) 0%,transparent 50%);}
+.areas-flag{position:absolute;bottom:26px;left:26px;z-index:2;display:flex;align-items:center;gap:12px;background:rgba(6,15,30,.8);backdrop-filter:blur(14px);padding:11px 18px;border-radius:50px;border:1px solid rgba(255,255,255,.1);}
+.areas-flag span{font-size:26px;}
+.areas-flag p{font-size:13px;font-weight:600;color:#fff;line-height:1.3;}
+.areas-flag small{font-size:11px;color:rgba(255,255,255,.44);display:block;margin-top:1px;}
+.area-tags{display:flex;flex-wrap:wrap;gap:10px;margin-top:30px;}
+.a-tag{display:inline-flex;align-items:center;gap:8px;background:#fff;border:1px solid var(--border);padding:10px 20px;border-radius:50px;font-size:13.5px;font-weight:500;color:var(--navy);box-shadow:var(--sh-sm);transition:all .35s var(--ease);}
+.a-tag i{color:var(--aqua);font-size:11px;}
+.a-tag:hover{background:var(--navy);color:#fff;border-color:var(--navy);transform:translateY(-3px);box-shadow:var(--sh-md);}
+.a-tag:hover i{color:var(--aqua2);}
+
+/* FOOTER */
+footer{background:var(--ink);padding:96px 7% 36px;position:relative;overflow:hidden;}
+footer::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,transparent,var(--aqua),var(--gold),var(--aqua),transparent);background-size:200% 200%;animation:gradShift 6s ease-in-out infinite;}
+.f-inner{max-width:1280px;margin:0 auto;position:relative;z-index:1;}
+.f-top{display:grid;grid-template-columns:2.2fr 1fr 1fr 1.3fr;gap:60px;padding-bottom:64px;border-bottom:1px solid rgba(255,255,255,.06);}
+.f-brand p{font-size:14px;font-weight:300;color:rgba(255,255,255,.33);line-height:1.85;max-width:290px;margin:18px 0 28px;}
+.f-socials{display:flex;gap:10px;}
+.soc-btn{width:40px;height:40px;border-radius:11px;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.08);display:flex;align-items:center;justify-content:center;color:rgba(255,255,255,.5);font-size:15px;transition:all var(--t) var(--ease);}
+.soc-btn:hover{background:var(--aqua);border-color:var(--aqua);color:#fff;transform:translateY(-4px);box-shadow:0 8px 22px rgba(0,184,217,.35);}
+.f-col h5{font-size:10.5px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,.68);margin-bottom:22px;}
+.f-links li{margin-bottom:11px;}
+.f-links a{font-size:14px;font-weight:300;color:rgba(255,255,255,.36);transition:color .3s,padding-left .3s;display:inline-block;}
+.f-links a:hover{color:var(--aqua2);padding-left:5px;}
+.f-contact li{display:flex;align-items:flex-start;gap:11px;margin-bottom:14px;font-size:14px;font-weight:300;color:rgba(255,255,255,.36);}
+.f-contact a{color:rgba(255,255,255,.36);transition:color .3s;}
+.f-contact a:hover{color:var(--aqua2);}
+.f-contact i{color:var(--aqua);margin-top:2px;flex-shrink:0;font-size:13px;}
+.f-bot{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:14px;padding-top:32px;}
+.f-bot p{font-size:12.5px;color:rgba(255,255,255,.2);}
+.f-bot a{color:rgba(0,184,217,.5);transition:color .3s;}
+.f-bot a:hover{color:var(--aqua2);}
+
+/* FLOATING */
+.click-rip{position:fixed;pointer-events:none;border-radius:50%;border:1.5px solid rgba(0,184,217,.5);transform:translate(-50%,-50%) scale(0);animation:rippleFx 1s ease-out forwards;z-index:9999;}
+.fab-wrap{position:fixed;bottom:30px;right:30px;display:flex;flex-direction:column;gap:12px;align-items:flex-end;z-index:900;}
+.fab{width:58px;height:58px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:22px;color:#fff;box-shadow:0 8px 28px rgba(0,0,0,.32);transition:all var(--t) var(--ease);position:relative;}
+.fab-wa{background:linear-gradient(135deg,#25D366,#128C7E);animation:pulsering 2.4s ease-in-out infinite,floatY 3.8s ease-in-out infinite;}
+.fab-ph{background:var(--grad-aqua);animation:floatY 3.8s .6s ease-in-out infinite;}
+.fab:hover{transform:scale(1.13);box-shadow:0 14px 38px rgba(0,0,0,.38);}
+.fab-tip{position:absolute;right:70px;background:rgba(6,15,30,.93);color:#fff;padding:6px 15px;border-radius:8px;font-size:12.5px;font-weight:600;white-space:nowrap;border:1px solid rgba(255,255,255,.07);backdrop-filter:blur(14px);opacity:0;pointer-events:none;transition:opacity .25s;}
+.fab:hover .fab-tip{opacity:1;}
+.stt-btn{position:fixed;bottom:116px;right:32px;z-index:900;width:44px;height:44px;border-radius:50%;background:rgba(6,15,30,.85);border:1px solid rgba(0,184,217,.28);color:var(--aqua);font-size:14px;display:flex;align-items:center;justify-content:center;opacity:0;pointer-events:none;transform:translateY(16px);transition:all .4s var(--ease);backdrop-filter:blur(14px);cursor:pointer;}
+.stt-btn.show{opacity:1;pointer-events:all;transform:translateY(0);}
+.stt-btn:hover{background:var(--aqua);color:#fff;border-color:var(--aqua);}
+
+/* RESPONSIVE */
+@media(max-width:1100px){
+  .intro-grid{grid-template-columns:1fr 1fr;gap:60px;}
+  .svc-grid{grid-template-columns:1fr 1fr;}
+  .f-top{grid-template-columns:1fr 1fr;gap:40px;}
+  .gal-grid{grid-template-columns:1fr 1fr;grid-template-rows:auto;}
+  .g-it{aspect-ratio:4/3;}
+  .g-it:nth-child(n){grid-column:auto;grid-row:auto;}
+  .why-layout{grid-template-columns:1fr;}
+  .why-visual{display:none;}
+  .process-grid{grid-template-columns:1fr 1fr;}
+  .process-grid::before{display:none;}
+  .svc-featured{grid-template-columns:1fr;}
+  .svc-feat-img{aspect-ratio:16/7;}
+}
+@media(max-width:880px){
+  .nav-links{display:none;}
+  .burger{display:flex;}
+  .intro-grid{grid-template-columns:1fr;}
+  .intro-img-accent,.intro-badge{display:none;}
+  .book-grid{grid-template-columns:1fr;gap:50px;}
+  .areas-grid{grid-template-columns:1fr;}
+  .tgrid{grid-template-columns:1fr;}
+  .f-row{grid-template-columns:1fr;}
+  .ba-wrap{aspect-ratio:4/3;}
+  .hero-stats{flex-wrap:wrap;}
+  .stat-item{min-width:50%;}
+}
+@media(max-width:600px){
+  .section{padding:80px 5%;}
+  #nav{padding:18px 5%;}
+  #nav.stuck{padding:12px 5%;}
+  .hero-inner{padding:130px 5% 120px;}
+  .hero-h1{font-size:clamp(40px,11vw,68px);}
+  .svc-grid{grid-template-columns:1fr;}
+  .f-top{grid-template-columns:1fr;}
+  .f-bot{flex-direction:column;text-align:center;}
+  .form-card{padding:32px 22px;}
+  .fab-wrap{bottom:20px;right:20px;}
+  .stat-item{min-width:50%;}
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav id="nav">
+  <a href="#hero" class="logo">
+    <img src="nova-pools-logo.png" alt="Nova Pools" class="logo-img">
+  </a>
+  <ul class="nav-links">
+    <li><a href="#intro">About</a></li>
+    <li><a href="#services">Services</a></li>
+    <li><a href="#gallery">Gallery</a></li>
+    <li><a href="#why">Why Us</a></li>
+    <li><a href="#testi">Reviews</a></li>
+    <li><a href="#areas">Areas</a></li>
+    <li><a href="#booking" class="nav-cta"><i class="fas fa-calendar-check"></i>&nbsp;Book Now</a></li>
+  </ul>
+  <button class="burger" id="burger" aria-label="Menu"><span></span><span></span><span></span></button>
+</nav>
+
+<!-- MOBILE NAV -->
+<div class="mob-nav" id="mobNav">
+  <img src="nova-pools-logo.png" alt="Nova Pools" class="mob-nav-logo">
+  <a href="#intro"    onclick="closeNav()">About</a>
+  <a href="#services" onclick="closeNav()">Services</a>
+  <a href="#gallery"  onclick="closeNav()">Gallery</a>
+  <a href="#why"      onclick="closeNav()">Why Us</a>
+  <a href="#testi"    onclick="closeNav()">Reviews</a>
+  <a href="#areas"    onclick="closeNav()">Areas</a>
+  <a href="#booking"  onclick="closeNav()" class="m-cta">Book a Service</a>
+</div>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-bg" id="heroBg"></div>
+  <div class="hero-ov"></div>
+  <div class="hero-shimmer"></div>
+  <div class="hero-inner">
+    <div class="eyebrow"><span class="pulse-dot"></span>Jamaica's Premier Pool Care Service</div>
+    <h1 class="hero-h1">A Brighter<br>Standard in<br><em>Pool Care.</em></h1>
+    <p class="hero-sub">Premium pool cleaning &amp; maintenance across Jamaica — hotel-quality results for luxury residences, villas, and commercial estates.</p>
+    <div class="hero-btns">
+      <a href="#booking" class="btn-p"><i class="fas fa-calendar-check"></i>Book a Service</a>
+      <a href="tel:+18768787929" class="btn-o"><i class="fas fa-phone"></i>(876) 878-7929</a>
+    </div>
+  </div>
+  <div class="scroll-cue" onclick="document.getElementById('intro').scrollIntoView({behavior:'smooth'})">
+    <span>Scroll</span>
+    <div class="scroll-line"></div>
+  </div>
+  <div class="hero-stats">
+    <div class="stat-item"><div class="stat-n">5<sup>+</sup></div><div class="stat-l">Years of Excellence</div></div>
+    <div class="stat-item"><div class="stat-n">200<sup>+</sup></div><div class="stat-l">Pools Serviced</div></div>
+    <div class="stat-item"><div class="stat-n">100<sup>%</sup></div><div class="stat-l">Satisfaction Rate</div></div>
+    <div class="stat-item"><div class="stat-n">24<sup>/7</sup></div><div class="stat-l">Support Available</div></div>
+  </div>
+</section>
+
+<!-- TICKER -->
+<div class="ticker-wrap" aria-hidden="true">
+  <div class="ticker-inner">
+    <span class="ticker-item"><i class="fas fa-circle"></i>Crystal Clear Pools</span>
+    <span class="ticker-item"><i class="fas fa-circle"></i>Hotel-Grade Service</span>
+    <span class="ticker-item"><i class="fas fa-circle"></i>Chemical Balancing</span>
+    <span class="ticker-item"><i class="fas fa-circle"></i>Algae Treatment</span>
+    <span class="ticker-item"><i class="fas fa-circle"></i>Filter Maintenance</span>
+    <span class="ticker-item"><i class="fas fa-circle"></i>Equipment Inspection</span>
+    <span class="ticker-item"><i class="fas fa-circle"></i>Weekly Service Plans</span>
+    <span class="ticker-item"><i class="fas fa-circle"></i>Jamaica's Finest Pools</span>
+    <span class="ticker-item"><i class="fas fa-circle"></i>Trusted by Hotels &amp; Villas</span>
+    <span class="ticker-item"><i class="fas fa-circle"></i>Crystal Clear Pools</span>
+    <span class="ticker-item"><i class="fas fa-circle"></i>Hotel-Grade Service</span>
+    <span class="ticker-item"><i class="fas fa-circle"></i>Chemical Balancing</span>
+    <span class="ticker-item"><i class="fas fa-circle"></i>Algae Treatment</span>
+    <span class="ticker-item"><i class="fas fa-circle"></i>Filter Maintenance</span>
+    <span class="ticker-item"><i class="fas fa-circle"></i>Equipment Inspection</span>
+    <span class="ticker-item"><i class="fas fa-circle"></i>Weekly Service Plans</span>
+    <span class="ticker-item"><i class="fas fa-circle"></i>Jamaica's Finest Pools</span>
+    <span class="ticker-item"><i class="fas fa-circle"></i>Trusted by Hotels &amp; Villas</span>
+  </div>
+</div>
+
+<!-- ABOUT -->
+<section id="intro" class="section">
+  <div class="container">
+    <div class="intro-grid">
+      <div class="intro-visual" data-reveal="left">
+        <div class="intro-img-main">
+          <img src="https://images.unsplash.com/photo-1575429198097-0414ec08e8cd?w=1000&q=90&auto=format&fit=crop" alt="Luxury pool service Jamaica" loading="lazy">
+        </div>
+        <div class="intro-img-accent">
+          <img src="https://images.unsplash.com/photo-1571902943202-507ec2618e8f?w=600&q=88&auto=format&fit=crop" alt="Pool technician" loading="lazy">
+        </div>
+        <div class="intro-badge">
+          <div class="ib-num">5+</div>
+          <div class="ib-lbl">Years of<br>Excellence</div>
+        </div>
+      </div>
+      <div data-reveal="right">
+        <div class="s-kicker">Our Story</div>
+        <h2 class="s-title">Built on Experience.<br>Driven by Excellence.</h2>
+        <p class="intro-p">Nova Pools was founded by a certified pool technician who spent years maintaining the pools of Jamaica's finest hotels, resorts, and luxury villas. What began as a passion for perfection became a mission: to bring that same gold-standard care to residential and commercial properties across the island.</p>
+        <p class="intro-p">Every pool we service is treated as if it belongs to a five-star property. We are not simply cleaning water — we are protecting your investment, safeguarding your family's health, and delivering an experience that reflects the standard your property deserves.</p>
+        <ul class="feat-list">
+          <li><span class="f-ico"><i class="fas fa-certificate"></i></span>Certified Pool &amp; Spa Technician</li>
+          <li><span class="f-ico"><i class="fas fa-hotel"></i></span>Hotel &amp; Resort Level Experience</li>
+          <li><span class="f-ico"><i class="fas fa-flask"></i></span>Professional-Grade Equipment &amp; Chemicals</li>
+          <li><span class="f-ico"><i class="fas fa-file-alt"></i></span>Detailed Service Report After Every Visit</li>
+          <li><span class="f-ico"><i class="fas fa-clock"></i></span>Punctual, Consistent &amp; Reliable — Guaranteed</li>
+        </ul>
+        <a href="#booking" class="btn-p" style="margin-top:10px;display:inline-flex;"><i class="fas fa-arrow-right"></i>Start Your Service</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section id="services" class="section">
+  <div class="container">
+    <div class="s-head" data-reveal="up">
+      <div class="s-kicker">What We Offer</div>
+      <h2 class="s-title">Comprehensive Pool Care,<br>Delivered Professionally</h2>
+      <p class="s-sub">From routine maintenance to specialist treatments — every service performed with hotel-grade precision and full documentation.</p>
+    </div>
+    <!-- Featured -->
+    <div class="svc-featured" data-reveal="up">
+      <div class="svc-feat-img">
+        <img src="https://images.unsplash.com/photo-1563233369-57a14f23174a?w=1200&q=90&auto=format&fit=crop&crop=center" alt="Weekly pool maintenance service" loading="lazy">
+      </div>
+      <div class="svc-feat-body">
+        <div class="svc-feat-tag"><i class="fas fa-star"></i>Most Popular</div>
+        <h3 class="svc-feat-h">Weekly &amp; Bi-weekly<br>Maintenance Plans</h3>
+        <p class="svc-feat-p">Our flagship service — a complete, recurring pool care package that keeps your pool pristine week after week. Includes skimming, vacuuming, chemical balancing, filter checks, and a detailed service report after every visit.</p>
+        <a href="#booking" class="svc-feat-link">Book This Service <i class="fas fa-arrow-right"></i></a>
+      </div>
+    </div>
+    <!-- Grid -->
+    <div class="svc-grid">
+      <div class="svc-card" data-reveal="up">
+        <div class="svc-num">01</div>
+        <div class="svc-ico"><i class="fas fa-wind"></i></div>
+        <div class="svc-name">Skimming &amp; Debris Removal</div>
+        <p class="svc-desc">Complete surface and basket cleaning each visit — leaves, insects, and organic debris removed before they sink, stain, or compromise water chemistry.</p>
+      </div>
+      <div class="svc-card" data-reveal="up">
+        <div class="svc-num">02</div>
+        <div class="svc-ico"><i class="fas fa-broom"></i></div>
+        <div class="svc-name">Brushing &amp; Vacuuming</div>
+        <p class="svc-desc">Thorough wall, floor, step, and cove brushing with professional vacuuming to eliminate algae footholds and sedimentation buildup.</p>
+      </div>
+      <div class="svc-card" data-reveal="up">
+        <div class="svc-num">03</div>
+        <div class="svc-ico"><i class="fas fa-flask"></i></div>
+        <div class="svc-name">Water Testing &amp; Chemical Balancing</div>
+        <p class="svc-desc">Multi-point water chemistry analysis and precise chemical treatment — pH, chlorine, alkalinity, and calcium hardness maintained at optimal levels.</p>
+      </div>
+      <div class="svc-card" data-reveal="up">
+        <div class="svc-num">04</div>
+        <div class="svc-ico"><i class="fas fa-filter"></i></div>
+        <div class="svc-name">Filter Cleaning &amp; Maintenance</div>
+        <p class="svc-desc">Regular backwashing, cartridge cleaning, and deep filter service to keep your filtration system running at peak efficiency.</p>
+      </div>
+      <div class="svc-card" data-reveal="up">
+        <div class="svc-num">05</div>
+        <div class="svc-ico"><i class="fas fa-layer-group"></i></div>
+        <div class="svc-name">Tile &amp; Waterline Cleaning</div>
+        <p class="svc-desc">Professional removal of calcium deposits, body oils, sunscreen films, and mineral staining for a flawless, resort-quality waterline.</p>
+      </div>
+      <div class="svc-card" data-reveal="up">
+        <div class="svc-num">06</div>
+        <div class="svc-ico"><i class="fas fa-tools"></i></div>
+        <div class="svc-name">Equipment Inspection</div>
+        <p class="svc-desc">Full inspection of pumps, motors, heaters, chlorinators, and automation systems — catching issues early prevents costly emergency repairs.</p>
+      </div>
+      <div class="svc-card" data-reveal="up">
+        <div class="svc-num">07</div>
+        <div class="svc-ico"><i class="fas fa-biohazard"></i></div>
+        <div class="svc-name">Algae Treatment &amp; Shock</div>
+        <p class="svc-desc">Targeted super-chlorination and algaecide treatments to eliminate green, black, and mustard algae — with a prevention program to stop recurrence.</p>
+      </div>
+      <div class="svc-card" data-reveal="up">
+        <div class="svc-num">08</div>
+        <div class="svc-ico"><i class="fas fa-spray-can"></i></div>
+        <div class="svc-name">Pool Opening &amp; Closing</div>
+        <p class="svc-desc">Comprehensive seasonal startup and shutdown services — full system inspection, chemical startup, equipment checks, and complete documentation.</p>
+      </div>
+      <div class="svc-card" data-reveal="up">
+        <div class="svc-num">09</div>
+        <div class="svc-ico"><i class="fas fa-microscope"></i></div>
+        <div class="svc-name">Advanced Water Lab Testing</div>
+        <p class="svc-desc">In-depth water quality analysis beyond standard testing — full mineral panel, phosphate levels, and a complete water profile report.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROCESS -->
+<section id="process" class="section">
+  <div class="container">
+    <div class="s-head" data-reveal="up">
+      <div class="s-kicker" style="color:var(--aqua);">The Process</div>
+      <h2 class="s-title s-title-w">How It Works</h2>
+      <p class="s-sub s-sub-w">Simple, seamless, and stress-free — from first contact to a sparkling result.</p>
+    </div>
+    <div class="process-grid">
+      <div class="step" data-reveal="up">
+        <div class="step-n">01</div>
+        <div class="step-t">Contact Us</div>
+        <p class="step-d">Reach out via phone, WhatsApp, or our booking form. We respond within hours — not days.</p>
+      </div>
+      <div class="step" data-reveal="up">
+        <div class="step-n">02</div>
+        <div class="step-t">Free Assessment</div>
+        <p class="step-d">We assess your pool's size, condition, and specific needs to recommend the right service plan.</p>
+      </div>
+      <div class="step" data-reveal="up">
+        <div class="step-n">03</div>
+        <div class="step-t">Professional Service</div>
+        <p class="step-d">Our technician arrives on time, fully equipped, and delivers a complete, documented service.</p>
+      </div>
+      <div class="step" data-reveal="up">
+        <div class="step-n">04</div>
+        <div class="step-t">Crystal Clear Results</div>
+        <p class="step-d">You receive a full service report and enjoy a pool that looks and feels resort-fresh, guaranteed.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- GALLERY -->
+<section id="gallery" class="section">
+  <div class="container">
+    <div class="s-head" data-reveal="up">
+      <div class="s-kicker">Our Work</div>
+      <h2 class="s-title">See the<br>Nova Pools Difference</h2>
+      <p class="s-sub">Drag the slider to witness the transformation. Every pool tells a story of neglect turned into perfection.</p>
+    </div>
+    <!-- Before/After -->
+    <div class="ba-wrap" id="baWrap" data-reveal="scale">
+      <div class="ba-img ba-before">
+        <img src="https://images.unsplash.com/photo-1575429198097-0414ec08e8cd?w=1600&q=90&auto=format&fit=crop" alt="Pool before" loading="lazy" style="filter:saturate(.28) brightness(.72) sepia(.28);">
+      </div>
+      <div class="ba-img ba-after" id="baAfter">
+        <img src="https://images.unsplash.com/photo-1575429198097-0414ec08e8cd?w=1600&q=90&auto=format&fit=crop" alt="Pool after" loading="lazy" style="filter:saturate(1.3) brightness(1.06) contrast(1.04);">
+      </div>
+      <div class="ba-div" id="baDivider"><div class="ba-knob">&#8676;&#8677;</div></div>
+      <div class="ba-lbl bef">Before</div>
+      <div class="ba-lbl aft">After</div>
+    </div>
+    <!-- Masonry grid -->
+    <div class="gal-grid">
+      <div class="g-it" data-reveal="up">
+        <img src="https://images.unsplash.com/photo-1563233369-57a14f23174a?w=900&q=88&auto=format&fit=crop&crop=center" alt="Luxury villa pool" loading="lazy">
+        <div class="g-ov"><span class="g-tag">Villa Pool</span></div>
+      </div>
+      <div class="g-it" data-reveal="up">
+        <img src="https://images.unsplash.com/photo-1571902943202-507ec2618e8f?w=700&q=88&auto=format&fit=crop" alt="Residential pool service" loading="lazy">
+        <div class="g-ov"><span class="g-tag">Residential</span></div>
+      </div>
+      <div class="g-it" data-reveal="up">
+        <img src="https://images.unsplash.com/photo-1600566752355-35792bedcfea?w=700&q=88&auto=format&fit=crop" alt="Hotel pool maintenance" loading="lazy">
+        <div class="g-ov"><span class="g-tag">Hotel Pool</span></div>
+      </div>
+      <div class="g-it" data-reveal="up">
+        <img src="https://images.unsplash.com/photo-1520250497591-112f2f40a3f4?w=700&q=88&auto=format&fit=crop" alt="Resort pool service" loading="lazy">
+        <div class="g-ov"><span class="g-tag">Resort</span></div>
+      </div>
+      <div class="g-it" data-reveal="up">
+        <img src="https://images.unsplash.com/photo-1569889302565-e9e7c0680e24?w=1100&q=88&auto=format&fit=crop" alt="Deep clean service" loading="lazy">
+        <div class="g-ov"><span class="g-tag">Deep Clean</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- WHY US -->
+<section id="why" class="section">
+  <div class="container">
+    <div class="why-layout">
+      <div>
+        <div class="s-head" data-reveal="up" style="margin-bottom:44px;">
+          <div class="s-kicker" style="color:var(--gold);">Why Nova Pools</div>
+          <h2 class="s-title s-title-w">The Standard<br>You Deserve.</h2>
+          <p class="s-sub s-sub-w">We built Nova Pools on the principles that drive the world's finest hospitality brands — precision, reliability, and an obsession with quality.</p>
+        </div>
+        <div class="why-cards">
+          <div class="wc" data-reveal="up">
+            <div class="wc-ico"><i class="fas fa-clock"></i></div>
+            <div><div class="wc-t">Reliable &amp; On-Time, Every Visit</div><p class="wc-d">We show up when we say we will, every single time. Your schedule is respected. No rescheduling, no excuses.</p></div>
+          </div>
+          <div class="wc" data-reveal="up">
+            <div class="wc-ico"><i class="fas fa-hotel"></i></div>
+            <div><div class="wc-t">Hotel-Level Training &amp; Experience</div><p class="wc-d">Trained maintaining Jamaica's luxury hotel pools — we bring that exact standard to your property.</p></div>
+          </div>
+          <div class="wc" data-reveal="up">
+            <div class="wc-ico"><i class="fas fa-search"></i></div>
+            <div><div class="wc-t">Meticulous &amp; Detail-Oriented</div><p class="wc-d">We test, treat, brush, vacuum, and inspect every component of your pool system — nothing is overlooked.</p></div>
+          </div>
+          <div class="wc" data-reveal="up">
+            <div class="wc-ico"><i class="fas fa-file-invoice"></i></div>
+            <div><div class="wc-t">Full Service Documentation</div><p class="wc-d">After every visit you receive a complete written service report. Full transparency, full accountability, always.</p></div>
+          </div>
+        </div>
+      </div>
+      <div class="why-visual" data-reveal="right">
+        <div class="why-img">
+          <img src="https://images.unsplash.com/photo-1563233369-57a14f23174a?w=900&q=90&auto=format&fit=crop" alt="Premium pool maintenance" loading="lazy">
+        </div>
+        <div class="why-sc">
+          <div class="wsc-n">200<sup style="font-size:22px;color:var(--aqua)">+</sup></div>
+          <div class="wsc-l">Pools Serviced</div>
+        </div>
+        <div class="why-award">
+          <div class="wa-ico">&#127942;</div>
+          <div class="wa-lbl">Premium<br>Service</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section id="testi" class="section">
+  <div class="container">
+    <div class="s-head" data-reveal="up" style="text-align:center;max-width:none;">
+      <div class="s-kicker" style="justify-content:center;margin:0 auto 16px;">Client Testimonials</div>
+      <h2 class="s-title" style="text-align:center;">What Our Clients Say</h2>
+    </div>
+    <div class="testi-pull" data-reveal="up">"Our pool has never looked this good. Nova Pools completely transformed it — now it looks like a boutique hotel pool every single week."</div>
+    <div class="tgrid">
+      <div class="tc" data-reveal="up">
+        <div class="tc-stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+        <p class="tc-text">"I've had multiple pool services over the years — Nova Pools is a completely different level. They are meticulous, professional, and the water quality is always perfect. Worth every penny."</p>
+        <div class="tc-auth"><div class="tc-av">S</div><div><div class="tc-name">Sarah M.</div><div class="tc-role">Villa Owner &middot; Kingston</div></div></div>
+      </div>
+      <div class="tc" data-reveal="up">
+        <div class="tc-stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+        <p class="tc-text">"Our guests always comment on how immaculate the pool is. Since switching to Nova Pools, we haven't had a single complaint — and our property reviews have improved significantly."</p>
+        <div class="tc-auth"><div class="tc-av">D</div><div><div class="tc-name">David R.</div><div class="tc-role">Property Manager &middot; St. Andrew</div></div></div>
+      </div>
+      <div class="tc" data-reveal="up">
+        <div class="tc-stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+        <p class="tc-text">"What impressed me most was the service report I received after each visit — detailed, professional, and transparent. This is what a serious company looks like. Highly recommended."</p>
+        <div class="tc-auth"><div class="tc-av">M</div><div><div class="tc-name">Michelle T.</div><div class="tc-role">Homeowner &middot; St. Catherine</div></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- BOOKING -->
+<section id="booking" class="section">
+  <div class="container">
+    <div class="book-grid">
+      <div data-reveal="left">
+        <div class="s-kicker" style="color:var(--gold);">Get Started Today</div>
+        <h2 class="s-title s-title-w">Ready for a<br>Pristine Pool?</h2>
+        <p class="s-sub s-sub-w" style="margin-bottom:44px;">Book online, call us directly, or send a WhatsApp message. We respond fast and confirm within hours.</p>
+        <a href="tel:+18768787929" class="c-way">
+          <div class="cw-ico ph"><i class="fas fa-phone"></i></div>
+          <div><div class="cw-lbl">Call Us Directly</div><div class="cw-val">1 (876) 878-7929</div></div>
+        </a>
+        <a href="https://wa.me/18768787929?text=Hi%20Nova%20Pools%2C%20I%27d%20like%20to%20enquire%20about%20your%20pool%20services." target="_blank" rel="noopener noreferrer" class="c-way">
+          <div class="cw-ico wa"><i class="fab fa-whatsapp"></i></div>
+          <div><div class="cw-lbl">WhatsApp Chat</div><div class="cw-val">Message Us Now</div></div>
+        </a>
+        <a href="mailto:info@novapoolsja.com" class="c-way">
+          <div class="cw-ico em"><i class="fas fa-envelope"></i></div>
+          <div><div class="cw-lbl">Email Us</div><div class="cw-val">info@novapoolsja.com</div></div>
+        </a>
+      </div>
+      <div data-reveal="right">
+        <div class="form-card">
+          <div class="form-title">Book a Service</div>
+          <form id="bookForm" novalidate>
+            <div class="f-row">
+              <div class="fg"><label for="fn">Full Name *</label><input type="text" id="fn" name="name" placeholder="John Smith" required></div>
+              <div class="fg"><label for="fp">Phone Number *</label><input type="tel" id="fp" name="phone" placeholder="(876) 000-0000" required></div>
+            </div>
+            <div class="fg"><label for="fe">Email Address</label><input type="email" id="fe" name="email" placeholder="you@example.com"></div>
+            <div class="fg"><label for="fl">Property Location *</label><input type="text" id="fl" name="location" placeholder="Kingston, St. Andrew, etc." required></div>
+            <div class="fg">
+              <label for="fs">Service Required *</label>
+              <select id="fs" name="service" required>
+                <option value="" disabled selected>Select a service&hellip;</option>
+                <option>Weekly Maintenance Plan</option>
+                <option>Bi-weekly Maintenance Plan</option>
+                <option>One-time Deep Clean</option>
+                <option>Algae Treatment &amp; Shock</option>
+                <option>Chemical Balancing</option>
+                <option>Filter Cleaning</option>
+                <option>Equipment Inspection</option>
+                <option>Pool Opening / Closing</option>
+                <option>Custom / Other</option>
+              </select>
+            </div>
+            <div class="f-row">
+              <div class="fg"><label for="fd">Preferred Date</label><input type="date" id="fd" name="date"></div>
+              <div class="fg">
+                <label for="ft">Pool Type</label>
+                <select id="ft" name="type">
+                  <option value="" disabled selected>Select type&hellip;</option>
+                  <option>Residential</option>
+                  <option>Villa / Estate</option>
+                  <option>Hotel / Resort</option>
+                  <option>Commercial</option>
+                </select>
+              </div>
+            </div>
+            <button type="submit" class="btn-submit"><i class="fas fa-calendar-check"></i>Confirm Booking &mdash; We'll Be in Touch</button>
+          </form>
+          <div class="f-success" id="fSuccess"><i class="fas fa-check-circle"></i><h3>Booking Received!</h3><p>Thank you &mdash; we'll be in touch within a few hours to confirm your appointment.</p></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- AREAS -->
+<section id="areas" class="section">
+  <div class="container">
+    <div class="areas-grid">
+      <div data-reveal="left">
+        <div class="s-kicker">Coverage</div>
+        <h2 class="s-title">Proudly Serving<br>All Across Jamaica</h2>
+        <p class="s-sub" style="margin-bottom:32px;">We currently service pools throughout Kingston, St. Andrew, and the surrounding parishes. Don't see your area? Reach out &mdash; we may be able to accommodate.</p>
+        <div class="area-tags">
+          <div class="a-tag"><i class="fas fa-map-pin"></i>Kingston</div>
+          <div class="a-tag"><i class="fas fa-map-pin"></i>St. Andrew</div>
+          <div class="a-tag"><i class="fas fa-map-pin"></i>St. Catherine</div>
+          <div class="a-tag"><i class="fas fa-map-pin"></i>Portmore</div>
+          <div class="a-tag"><i class="fas fa-map-pin"></i>Spanish Town</div>
+          <div class="a-tag"><i class="fas fa-map-pin"></i>St. Thomas</div>
+          <div class="a-tag"><i class="fas fa-map-pin"></i>Greater Kingston</div>
+          <div class="a-tag"><i class="fas fa-map-pin"></i>+ Surrounding Areas</div>
+        </div>
+        <a href="#booking" class="btn-p" style="margin-top:38px;display:inline-flex;"><i class="fas fa-map-marker-alt"></i>Check Your Coverage</a>
+      </div>
+      <div class="areas-img" data-reveal="right">
+        <img src="https://images.unsplash.com/photo-1563233369-57a14f23174a?w=900&q=85&auto=format&fit=crop" alt="Jamaica pool service coverage" loading="lazy">
+        <div class="areas-flag">
+          <span>&#127471;&#127474;</span>
+          <div><p>Serving Jamaica</p><small>Kingston &amp; Surroundings</small></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="f-inner">
+    <div class="f-top">
+      <div class="f-brand">
+        <a href="#hero" class="logo">
+          <img src="nova-pools-logo.png" alt="Nova Pools" class="logo-img" style="height:58px;">
+        </a>
+        <p>Jamaica's premier pool cleaning and maintenance service. Hotel-quality care for residences, villas, and commercial properties across the island.</p>
+        <div class="f-socials">
+          <a href="#" class="soc-btn" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+          <a href="#" class="soc-btn" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+          <a href="#" class="soc-btn" aria-label="TikTok"><i class="fab fa-tiktok"></i></a>
+          <a href="https://wa.me/18768787929" class="soc-btn" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+        </div>
+      </div>
+      <div class="f-col">
+        <h5>Navigation</h5>
+        <ul class="f-links">
+          <li><a href="#intro">About Us</a></li>
+          <li><a href="#services">Services</a></li>
+          <li><a href="#gallery">Gallery</a></li>
+          <li><a href="#why">Why Nova Pools</a></li>
+          <li><a href="#testi">Client Reviews</a></li>
+          <li><a href="#areas">Service Areas</a></li>
+          <li><a href="#booking">Book a Service</a></li>
+        </ul>
+      </div>
+      <div class="f-col">
+        <h5>Services</h5>
+        <ul class="f-links">
+          <li><a href="#services">Pool Cleaning</a></li>
+          <li><a href="#services">Chemical Balancing</a></li>
+          <li><a href="#services">Algae Treatment</a></li>
+          <li><a href="#services">Filter Maintenance</a></li>
+          <li><a href="#services">Equipment Inspection</a></li>
+          <li><a href="#services">Tile &amp; Waterline</a></li>
+          <li><a href="#services">Lab Water Testing</a></li>
+        </ul>
+      </div>
+      <div class="f-col">
+        <h5>Contact</h5>
+        <ul class="f-contact">
+          <li><i class="fas fa-phone"></i><a href="tel:+18768787929">1 (876) 878-7929</a></li>
+          <li><i class="fab fa-whatsapp"></i><a href="https://wa.me/18768787929" target="_blank" rel="noopener noreferrer">WhatsApp Us</a></li>
+          <li><i class="fas fa-envelope"></i><a href="mailto:info@novapoolsja.com">info@novapoolsja.com</a></li>
+          <li><i class="fas fa-map-marker-alt"></i><span>Kingston, Jamaica</span></li>
+        </ul>
+      </div>
+    </div>
+    <div class="f-bot">
+      <p>&copy; 2025 Nova Pools Jamaica. All rights reserved.</p>
+      <p>Designed to reflect a brighter standard.</p>
+    </div>
+  </div>
+</footer>
+
+<!-- FABs -->
+<div class="fab-wrap">
+  <a href="https://wa.me/18768787929?text=Hi%20Nova%20Pools%2C%20I%27d%20like%20to%20enquire%20about%20your%20pool%20services." target="_blank" rel="noopener noreferrer" class="fab fab-wa" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i><span class="fab-tip">Chat on WhatsApp</span></a>
+  <a href="tel:+18768787929" class="fab fab-ph" aria-label="Call"><i class="fas fa-phone"></i><span class="fab-tip">(876) 878-7929</span></a>
+</div>
+<button class="stt-btn" id="sttBtn" aria-label="Scroll to top" onclick="window.scrollTo({top:0,behavior:'smooth'})"><i class="fas fa-chevron-up"></i></button>
+
+<script>
+/* NAV */
+const navEl = document.getElementById('nav');
+const sttBtn = document.getElementById('sttBtn');
+window.addEventListener('scroll', () => {
+  navEl.classList.toggle('stuck', window.scrollY > 80);
+  sttBtn.classList.toggle('show', window.scrollY > 500);
+}, { passive: true });
+
+/* HERO KEN BURNS */
+const heroBg = document.getElementById('heroBg');
+window.addEventListener('load', () => heroBg.classList.add('loaded'));
+window.addEventListener('scroll', () => {
+  if (window.scrollY < window.innerHeight)
+    heroBg.style.transform = `scale(1) translateY(${window.scrollY * 0.22}px)`;
+}, { passive: true });
+
+/* MOBILE NAV */
+const burger = document.getElementById('burger');
+const mobNav = document.getElementById('mobNav');
+burger.addEventListener('click', () => {
+  const o = mobNav.classList.toggle('open');
+  burger.classList.toggle('open', o);
+  document.body.style.overflow = o ? 'hidden' : '';
+});
+function closeNav() {
+  mobNav.classList.remove('open');
+  burger.classList.remove('open');
+  document.body.style.overflow = '';
+}
+
+/* SCROLL REVEAL */
+const revEls = document.querySelectorAll('[data-reveal]');
+const revIO = new IntersectionObserver(entries => {
+  entries.forEach(entry => {
+    if (!entry.isIntersecting) return;
+    const el = entry.target;
+    const siblings = [...el.parentElement.querySelectorAll(':scope > [data-reveal]')];
+    const idx = siblings.indexOf(el);
+    el.style.transitionDelay = idx > 0 ? idx * 0.1 + 's' : '0s';
+    el.classList.add('in');
+    revIO.unobserve(el);
+  });
+}, { threshold: 0.08, rootMargin: '0px 0px -30px 0px' });
+revEls.forEach(el => revIO.observe(el));
+
+/* BEFORE/AFTER SLIDER */
+const baWrap = document.getElementById('baWrap');
+const baAfter = document.getElementById('baAfter');
+const baDivider = document.getElementById('baDivider');
+let drag = false;
+function setBA(cx) {
+  const r = baWrap.getBoundingClientRect();
+  let p = ((cx - r.left) / r.width) * 100;
+  p = Math.max(3, Math.min(97, p));
+  baAfter.style.clipPath = 'inset(0 ' + (100 - p) + '% 0 0)';
+  baDivider.style.left = p + '%';
+}
+baWrap.addEventListener('mousedown', e => { drag = true; setBA(e.clientX); });
+baWrap.addEventListener('touchstart', e => { drag = true; setBA(e.touches[0].clientX); }, { passive: true });
+window.addEventListener('mousemove', e => { if (drag) setBA(e.clientX); });
+window.addEventListener('touchmove', e => { if (drag) setBA(e.touches[0].clientX); }, { passive: true });
+window.addEventListener('mouseup', () => drag = false);
+window.addEventListener('touchend', () => drag = false);
+
+/* BOOKING FORM */
+const bookForm = document.getElementById('bookForm');
+const fSuccess = document.getElementById('fSuccess');
+const fdEl = document.getElementById('fd');
+if (fdEl) fdEl.min = new Date().toISOString().split('T')[0];
+
+bookForm.addEventListener('submit', e => {
+  e.preventDefault();
+  if (!bookForm.checkValidity()) { bookForm.reportValidity(); return; }
+  const v = id => document.getElementById(id).value;
+  const msg = encodeURIComponent(
+    'Hello Nova Pools! I would like to book a service.\n\n' +
+    'Name: ' + v('fn') + '\nPhone: ' + v('fp') +
+    (v('fe') ? '\nEmail: ' + v('fe') : '') +
+    '\nLocation: ' + v('fl') +
+    '\nService: ' + v('fs') +
+    (v('ft') ? '\nPool Type: ' + v('ft') : '') +
+    (v('fd') ? '\nPreferred Date: ' + v('fd') : '')
+  );
+  bookForm.style.display = 'none';
+  fSuccess.style.display = 'block';
+  setTimeout(() => window.open('https://wa.me/18768787929?text=' + msg, '_blank'), 1500);
+});
+
+/* CLICK RIPPLE */
+document.addEventListener('click', e => {
+  if (e.target.closest('a,button,input,select,textarea,.burger')) return;
+  const d = document.createElement('div');
+  d.className = 'click-rip';
+  d.style.cssText = 'left:' + e.clientX + 'px;top:' + e.clientY + 'px;width:70px;height:70px;';
+  document.body.appendChild(d);
+  setTimeout(() => d.remove(), 1000);
+});
+</script>
+</body>
+</html>
