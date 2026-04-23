@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:image="http://www.google.com/schemas/sitemap-image/0.9">
+  <url>
+    <loc>https://novapoolsja.com/</loc>
+    <lastmod>2026-04-23</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+    <image:image>
+      <image:loc>https://novapoolsja.com/Homepic.PNG</image:loc>
+      <image:title>Nova Pools Jamaica - Luxury Pool Cleaning</image:title>
+      <image:caption>Nova Pools technician servicing a luxury pool in Montego Bay, Jamaica</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://novapoolsja.com/nova-pools-logo.png</image:loc>
+      <image:title>Nova Pools Jamaica Logo</image:title>
+    </image:image>
+  </url>
+</urlset>

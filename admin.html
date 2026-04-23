@@ -232,6 +232,7 @@ tbody td{padding:14px 16px;font-size:13px;color:rgba(255,255,255,0.8);vertical-a
               <th>Phone</th>
               <th>Service</th>
               <th>Pool Type</th>
+              <th>Location</th>
               <th>Date</th>
               <th>Source</th>
               <th>Status</th>
@@ -283,6 +284,18 @@ tbody td{padding:14px 16px;font-size:13px;color:rgba(255,255,255,0.8);vertical-a
         </select>
       </div>
       <div class="fg"><label>Preferred Date</label><input type="date" id="mDate"></div>
+    </div>
+    <div class="fg">
+      <label>Location / Parish</label>
+      <select id="mLocation">
+        <option value="">Select…</option>
+        <option>Montego Bay</option>
+        <option>St. James (outside MoBay)</option>
+        <option>Trelawny / Falmouth</option>
+        <option>Hanover / Lucea</option>
+        <option>Westmoreland / Negril</option>
+        <option>Other — Western Jamaica</option>
+      </select>
     </div>
     <div class="fg">
       <label>Status</label>
@@ -369,6 +382,7 @@ function renderTable() {
       <td class="td-phone"><a href="tel:${esc(b.phone)}">${esc(b.phone)}</a></td>
       <td>${esc(b.service)}</td>
       <td>${b.poolType ? esc(b.poolType) : '<span style="opacity:.3">—</span>'}</td>
+      <td>${b.location ? esc(b.location) : '<span style="opacity:.3">—</span>'}</td>
       <td>${b.preferredDate ? fmtDate(b.preferredDate) : '<span style="opacity:.3">—</span>'}</td>
       <td><span class="badge ${b.source||'manual'}">${b.source==='website'?'Website':'Manual'}</span></td>
       <td>
@@ -404,21 +418,22 @@ function closeModal() {
   ['mName','mPhone','mNotes'].forEach(id=>document.getElementById(id).value='');
   document.getElementById('mService').selectedIndex=0;
   document.getElementById('mPoolType').selectedIndex=0;
+  document.getElementById('mLocation').selectedIndex=0;
   document.getElementById('mStatus').value='pending';
   document.getElementById('mDate').value='';
 }
 function saveManualBooking() {
   const name=document.getElementById('mName').value.trim(), phone=document.getElementById('mPhone').value.trim(), svc=document.getElementById('mService').value;
   if (!name||!phone||!svc) { alert('Please fill in Name, Phone and Service.'); return; }
-  const booking={ id:Date.now().toString(), name, phone, service:svc, poolType:document.getElementById('mPoolType').value, preferredDate:document.getElementById('mDate').value, notes:document.getElementById('mNotes').value.trim(), status:document.getElementById('mStatus').value, source:'manual', createdAt:new Date().toISOString() };
+  const booking={ id:Date.now().toString(), name, phone, service:svc, poolType:document.getElementById('mPoolType').value, location:document.getElementById('mLocation').value, preferredDate:document.getElementById('mDate').value, notes:document.getElementById('mNotes').value.trim(), status:document.getElementById('mStatus').value, source:'manual', createdAt:new Date().toISOString() };
   const b=getBookings(); b.unshift(booking); setBookings(b);
   closeModal(); renderTable(); updateStats();
 }
 
 function exportCSV() {
   const b=getBookings(); if (!b.length) { alert('No bookings to export.'); return; }
-  const header=['Name','Phone','Service','Pool Type','Preferred Date','Status','Source','Notes','Received'];
-  const rows=b.map(x=>[x.name,x.phone,x.service,x.poolType||'',x.preferredDate||'',x.status,x.source||'',x.notes||'',x.createdAt].map(v=>'"'+String(v).replace(/"/g,'""')+'"').join(','));
+  const header=['Name','Phone','Service','Pool Type','Location','Preferred Date','Status','Source','Notes','Received'];
+  const rows=b.map(x=>[x.name,x.phone,x.service,x.poolType||'',x.location||'',x.preferredDate||'',x.status,x.source||'',x.notes||'',x.createdAt].map(v=>'"'+String(v).replace(/"/g,'""')+'"').join(','));
   const csv=[header.join(','),...rows].join('\n');
   const a=document.createElement('a'); a.href=URL.createObjectURL(new Blob([csv],{type:'text/csv'}));
   a.download='nova-pools-bookings-'+new Date().toISOString().slice(0,10)+'.csv'; a.click();
